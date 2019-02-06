@@ -1,0 +1,61 @@
+directive @auth(role: String!) on FIELD_DEFINITION | OBJECT
+
+scalar Date
+
+type Lift @auth(role: "Admin") {
+  name: String
+  capacity: Int
+  status: Status
+  night: Boolean
+  elevationGain: Int
+  time: String
+  trailAccess: [Trail!]!
+  id: ID!
+}
+
+type Trail {
+  name: String
+  lift: Lift
+  "Trail difficulty"
+  difficulty: String
+  status: Status
+  groomed: Boolean
+  snowmaking: Boolean
+  trees: Boolean
+  night: Boolean
+  accessedByLifts: [Lift!]!
+  id: ID!
+  built: Date
+}
+
+enum Status {
+  OPEN
+  HOLD
+  CLOSED
+}
+
+union SearchResult = Lift | Trail
+
+type Query {
+  "Number of lifts at Snowtooth Mountain"
+  liftCount: Int
+  trailCount: Int
+  """
+  All of these
+  cool trails
+  and how cool they are
+  """
+  lifts(status: Status): [Lift!]! @auth(role: "Auth")
+  trails(status: Status): [Trail!]!
+  search(query: String): [SearchResult!]!
+}
+
+type Mutation {
+  setLiftStatus(liftId: ID!, status: Status): Lift!
+  setTrailStatus(trailId: ID!, status: Status): Trail!
+}
+
+type Subscription {
+  liftStatusChange: Lift
+  trailStatusChange: Trail
+}

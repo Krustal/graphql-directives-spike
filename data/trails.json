@@ -8,7 +8,8 @@
     "snowmaking": false,
     "trees": false,
     "night": false,
-    "id": "blue-bird"
+    "id": "blue-bird",
+    "built": "2018-01-01"
   },
   {
     "name": "Blackhawk",
@@ -19,7 +20,8 @@
     "snowmaking": false,
     "trees": false,
     "night": false,
-    "id": "blackhawk"
+    "id": "blackhawk",
+    "built": "2018-01-01"
   },
   {
     "name": "Duck's Revenge",
@@ -30,7 +32,8 @@
     "snowmaking": false,
     "trees": true,
     "night": false,
-    "id": "ducks-revenge"
+    "id": "ducks-revenge",
+    "built": "2018-01-01"
   },
   {
     "name": "Ice Streak",
@@ -41,7 +44,8 @@
     "snowmaking": false,
     "trees": false,
     "night": false,
-    "id": "ice-streak"
+    "id": "ice-streak",
+    "built": "2018-01-01"
   },
   {
     "name": "Parachute",
